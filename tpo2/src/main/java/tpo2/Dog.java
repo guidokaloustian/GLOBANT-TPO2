@@ -9,14 +9,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        return "Dog{" +
-                "name='" + name + '\'' +
-                '}';
+        return "(Dog) " + "name= " + name;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Dog otherDog = (Dog) obj;
-        return this.name.equals(otherDog.name);
-    }
 }

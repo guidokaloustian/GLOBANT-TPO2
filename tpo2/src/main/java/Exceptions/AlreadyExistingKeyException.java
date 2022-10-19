@@ -2,10 +2,7 @@ package Exceptions;
 
 public class AlreadyExistingKeyException extends RuntimeException {
 
-    String detailMessage = "La clave que esta intengando ingresar ya existe";
-
     public AlreadyExistingKeyException() {
-        getMessage();
     }
 
     public AlreadyExistingKeyException(String message) {

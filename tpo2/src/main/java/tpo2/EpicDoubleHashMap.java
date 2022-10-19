@@ -1,123 +1,200 @@
 package tpo2;
 
 import Exceptions.AlreadyExistingKeyException;
-import Exceptions.NonExistingKeyExcpetion;
+import Exceptions.NonExistingKeyException;
+import Exceptions.NonExistingValueException;
+import Exceptions.ValueOverflowException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class EpicDoubleHashMap<K extends Number, T, V> {
-    HashMap<K, T> map1;
-    HashMap<K, V> map2;
+    private HashMap<K, T> mapT;
+    private HashMap<K, V> mapV;
 
     public EpicDoubleHashMap() {
-        this.map1 = new HashMap<>();
-        this.map2 = new HashMap<>();
+        this.mapT = new HashMap<>();
+        this.mapV = new HashMap<>();
     }
 
-    public void addFirstValue (K key, T value) {
+
+    // Method to add the first value to a key.
+    public void addFirstValue(K key, T value) {
         try {
-            if (map1.containsKey(key)) {
-                throw new AlreadyExistingKeyException("La clave que esta intengando ingresar ya existe");
+            // 3) a).
+            if (mapT.containsKey(key)) {
+                throw new AlreadyExistingKeyException("La clave que esta intentando ingresar ya existe.");
             }
-            map1.put(key, value);
+            if (checkValues(value)) {
+                throw new ValueOverflowException("No puede haber tres valores iguales.");
+            }
+            mapT.put(key, value);
         } catch (AlreadyExistingKeyException aeke) {
             System.out.println(aeke.getMessage());
-            aeke.printStackTrace();
+            aeke.printStackTrace(System.out);
+        }
+        catch (ValueOverflowException voe) {
+            System.out.println(voe.getMessage());
+            voe.printStackTrace(System.out);
         }
     }
 
-    public void addSecondValue (K key, V value) {
+    // Method to add the second value to a key.
+    public void addSecondValue(K key, V value) {
         try {
-            if (map2.containsKey(key)) {
-                throw new AlreadyExistingKeyException("La clave que esta intengando ingresar ya existe");
+            // 3) a).
+            if (mapV.containsKey(key)) {
+                throw new AlreadyExistingKeyException("La clave que esta intentando ingresar ya existe.");
             }
-            map2.put(key, value);
+            if (checkValues(value)) {
+                throw new ValueOverflowException("No puede haber tres valores iguales.");
+            }
+            mapV.put(key, value);
         } catch (AlreadyExistingKeyException aeke) {
             System.out.println(aeke.getMessage());
-            aeke.printStackTrace();
+            aeke.printStackTrace(System.out);
+        }
+        catch (ValueOverflowException voe) {
+            System.out.println(voe.getMessage());
+            voe.printStackTrace(System.out);
         }
     }
 
-    public void addTwoValues (K key, T value1, V value2) {
+    // Method to add two values to a key.
+    public void addTwoValues(K key, T value1, V value2) {
         try {
-            if (map1.containsKey(key) || map2.containsKey(key)) {
-                throw new AlreadyExistingKeyException("La clave que esta intengando ingresar ya existe");
+            // 3) a).
+            if (mapT.containsKey(key) || mapV.containsKey(key)) {
+                throw new AlreadyExistingKeyException("La clave que esta intentando ingresar ya existe.");
             }
-            map1.put(key, value1);
-            map2.put(key, value2);
+            if (checkValues(value1) || (checkValues(value2))) {
+                throw new ValueOverflowException("No puede haber tres valores iguales.");
+            }
+            mapT.put(key, value1);
+            mapV.put(key, value2);
         } catch (AlreadyExistingKeyException aeke) {
             System.out.println(aeke.getMessage());
-            aeke.printStackTrace();
+            aeke.printStackTrace(System.out);
+        }
+        catch (ValueOverflowException voe) {
+            System.out.println(voe.getMessage());
+            voe.printStackTrace(System.out);
         }
 
     }
 
-    public void getValueT (K key) {
-        System.out.println(map1.get(key));
-    }
-
-    public void getValueV (K key) {
-        System.out.println(map2.get(key));
-    }
-
-    public void removeItem (K key) {
+    // Method to get the T value.
+    public void getValueT(K key) {
         try {
-            if (!map1.containsKey(key) || !map2.containsKey(key)) {
-                throw new NonExistingKeyExcpetion("No existe ningun item con la clave ingresada");
+            if (!mapT.containsKey(key) && mapV.containsKey(key)) {
+                throw new NonExistingValueException("La clave ingresada no contiene un valor T.");
             }
-            map1.remove(key);
-            map2.remove(key);
-        } catch (NonExistingKeyExcpetion neke) {
+            if (!mapT.containsKey(key) && !mapV.containsKey(key)){
+                throw new NonExistingKeyException("No existe ningun item con la clave ingresada.");
+            }
+            System.out.println("El valor 1 de " + key + " es: " + mapT.get(key));
+        } catch (NonExistingValueException neve) {
+            System.out.println(neve.getMessage());
+            neve.printStackTrace(System.out);
+        }
+        catch (NonExistingKeyException neke) {
             System.out.println(neke.getMessage());
-            neke.printStackTrace();
+            neke.printStackTrace(System.out);
         }
     }
 
-    public ArrayList valuesList() {
+    // Method to get the V value.
+    public void getValueV(K key) {
+        try {
+            if (!mapV.containsKey(key) && mapT.containsKey(key)) {
+                throw new NonExistingValueException("La clave ingresada no contiene un valor V.");
+            }
+            if (!mapT.containsKey(key) && !mapV.containsKey(key)) {
+                throw new NonExistingKeyException("No existe ningun item con la clave ingresada.");
+            }
+            System.out.println("El valor 2 de " + key + " es: " + mapV.get(key));
+        } catch (NonExistingValueException neve) {
+            System.out.println(neve.getMessage());
+            neve.printStackTrace(System.out);
+        }
+        catch (NonExistingKeyException neke) {
+            System.out.println(neke.getMessage());
+            neke.printStackTrace(System.out);
+        }
+    }
+
+    // Method to remove an item.
+    public void removeItem(K key) {
+        try {
+            // 3) b).
+            if (!mapT.containsKey(key) && !mapV.containsKey(key)) {
+                throw new NonExistingKeyException("No existe ningun item con la clave ingresada.");
+            }
+            mapT.remove(key);
+            mapV.remove(key);
+        } catch (NonExistingKeyException neke) {
+            System.out.println(neke.getMessage());
+            neke.printStackTrace(System.out);
+        }
+    }
+
+    // Private method that contains an ArrayList with all values.
+    private ArrayList valuesList() {
         ArrayList<Object> values = new ArrayList<>();
-        map1.forEach((key, value) -> {
-            values.add(map1.get(key));
+        mapT.forEach((key, value) -> {
+            values.add(mapT.get(key));
         });
-        map2.forEach((key, value) -> {
-            values.add(map2.get(key));
-        }); return values;
+        mapV.forEach((key, value) -> {
+            values.add(mapV.get(key));
+        });
+        return values;
     }
 
-    public void checkValues() {
-        valuesList();
-
+    // Private method that checks if a value is going to be repeated 3 times.
+    private boolean checkValues(Object value) {
+        int frequency = 0;
+        int i = 0;
+        while (i < valuesList().size() && frequency < 2) {
+            if (value.equals(valuesList().get(i))) {
+                frequency++;
+            }
+            i++;
+        }
+        return frequency == 2;
     }
 
-    private int tValuesSize() {
-        return map1.size();
+    // Private method to re-use in other methods (gives the size of mapT).
+    private int amountOfTValues() {
+        return mapT.size();
     }
 
-    private int vValuesSize() {
-        return map2.size();
+    // Private method to re-use in other methods (gives the size of mapV).
+    private int amountOfVValues() {
+        return mapV.size();
     }
 
+    // Method that returns which type has more values.
     public void amountOfValues() {
-        if (tValuesSize() > vValuesSize()) {
+        if (amountOfTValues() > amountOfVValues()) {
             System.out.println("Existen mas valores de tipo 1");
-        } else if (tValuesSize() < vValuesSize()) {
+        } else if (amountOfTValues() < amountOfVValues()) {
             System.out.println("Existen mas valores de tipo 2");
         } else {
-            System.out.println((tValuesSize() != 0) ?
+            System.out.println((amountOfTValues() != 0) ?
                     "Existen la misma cantidad de valores de los dos tipos." : "Aun no existen items.");
         }
     }
 
+    // Method that returns true if exists repeated values.
     public boolean repeteadValues() {
-        valuesList();
-        boolean flag = false;
-        for (int i = 0; i < valuesList().size(); i++) {
-            int j;
-            for (j = 0; j < valuesList().size(); j++) {
-                if (valuesList().get(i).equals(valuesList().get(j))) {
-                    flag = true;
-                }
-            }
-        } return flag;
+        int frequency = 0;
+        int i = 0;
+        while (i < valuesList().size() && frequency <= 1) {
+            frequency = Collections.frequency(valuesList(), valuesList().get(i));
+            i++;
+        }
+        return frequency > 1;
     }
+
+}
