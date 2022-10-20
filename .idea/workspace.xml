@@ -4,18 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70d77193-926c-49a8-a9ad-80aa993828d7" name="Changes" comment="">
+    <list default="true" id="70d77193-926c-49a8-a9ad-80aa993828d7" name="Changes" comment="-Actualización con mensajes que indican las acciones en la clase principal.&#10;-Actualización de las excepciones, eliminando las anteriores para poder dejar una sola clases general.&#10;-Modificación de la clase EpicDoubleHashMap con Strings y acomodo de los TryCatch.">
+      <change afterPath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/ExceptionMessages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/AlreadyExistingKeyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/AlreadyExistingKeyException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/NonExistingKeyExcpetion.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/NonExistingKeyException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/AlreadyExistingKeyException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/NonExistingKeyException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/NonExistingValueException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/Exceptions/ValueOverflowException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/EpicDoubleHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/EpicDoubleHashMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/src/main/java/tpo2/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/AlreadyExistingKeyException.class" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/AlreadyExistingKeyException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/NonExistingKeyExcpetion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Cat.class" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Cat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Dog.class" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Dog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/AlreadyExistingKeyException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/NonExistingKeyException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/NonExistingValueException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tpo2/target/classes/Exceptions/ValueOverflowException.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tpo2/target/classes/tpo2/EpicDoubleHashMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/target/classes/tpo2/EpicDoubleHashMap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/tpo2/target/classes/tpo2/Principal.class" afterDir="false" />
     </list>
@@ -49,15 +50,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PIL/IdeaProjects/GLOBANT-TPO2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/xNAHU/IdeaProjects/GLOBANT-TPO2"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GLOBANT-TPO2" />
@@ -94,6 +95,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-Actualización con mensajes que indican las acciones en la clase principal.&#10;-Actualización de las excepciones, eliminando las anteriores para poder dejar una sola clases general.&#10;-Modificación de la clase EpicDoubleHashMap con Strings y acomodo de los TryCatch." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Actualización con mensajes que indican las acciones en la clase principal.&#10;-Actualización de las excepciones, eliminando las anteriores para poder dejar una sola clases general.&#10;-Modificación de la clase EpicDoubleHashMap con Strings y acomodo de los TryCatch." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
