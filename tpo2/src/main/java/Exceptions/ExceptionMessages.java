@@ -2,8 +2,7 @@ package Exceptions;
 
 public class ExceptionMessages extends RuntimeException{
 
-    public ExceptionMessages() {
-    }
+    public ExceptionMessages() {}
 
     public ExceptionMessages(String message) {
         super(message);
